@@ -10,49 +10,49 @@
 
 @implementation FISAppDelegate
 
-- (NSMutableArray *)takeANumberWithDeli:(NSMutableArray *)deli Name:(NSString *)name
+- (NSMutableArray *)takeANumberWithDeliLine:(NSMutableArray *)deliLine Name:(NSString *)name
 {
-    [deli addObject:name];
+    [deliLine addObject:name];
 
-    NSLog(@"You are number %d", [deli count]+1);
-    return deli;
+    NSLog(@"You are number %lu", [deliLine count]+1);
+    return deliLine;
 }
 
-- (NSMutableArray *)nowServingWithDeli:(NSMutableArray *)deli
+- (NSMutableArray *)nowServingWithDeliLine:(NSMutableArray *)deliLine
 {
-    if ([deli count] == 0)
+    if ([deliLine count] == 0)
     {
         NSLog(@"There is nobody waiting to be served!");
-        return deli;
+        return deliLine;
     }
     else
     {
-        NSString *nowServingString = [NSString stringWithFormat:@"Currently Serving %@",[deli firstObject]];
-        [deli removeObjectAtIndex:0];
+        NSString *nowServingString = [NSString stringWithFormat:@"Currently Serving %@",[deliLine firstObject]];
+        [deliLine removeObjectAtIndex:0];
 
         NSLog(@"%@",nowServingString);
-        return deli;
+        return deliLine;
     }
 }
 
-- (NSString *)lineWithDeli:(NSMutableArray *)deli
+- (NSString *)deliLine:(NSMutableArray *)deliLine
 {
-    if ([deli count]==0) {
+    if ([deliLine count]==0) {
         return @"The line is empty";
     }
 
     NSMutableString *lineString = [NSMutableString stringWithString: @"The line is currently: " ];
 
     NSInteger counter = 1;
-    for (NSString *name in deli)
+    for (NSString *name in deliLine)
     {
-        if(![[deli lastObject] isEqual:name])
+        if(![[deliLine lastObject] isEqual:name])
         {
-            [lineString appendString:[NSString stringWithFormat:@"%d. %@ ",counter, name]];
+            [lineString appendString:[NSString stringWithFormat:@"%ld. %@ ",(long)counter, name]];
         }
         else
         {
-            [lineString appendString:[NSString stringWithFormat:@"%d. %@",counter, name]];
+            [lineString appendString:[NSString stringWithFormat:@"%ld. %@",(long)counter, name]];
         }
         counter++;
     }
