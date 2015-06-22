@@ -25,9 +25,9 @@ describe(@"FISAppDelegate", ^{
         deliLine = [[NSMutableArray alloc] init];
     });
 
-    describe(@"takeaNumberWithDeliLine:Name:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(takeANumberWithDeliLine:Name:));
+    describe(@"addName:toDeliLine:", ^{
+        it(@"should respond to the correct selector", ^{
+            expect(delegate).to.respondTo(@selector(addName:toDeliLine:));
         });
 
         it(@"Should return a deli with another person", ^{
@@ -51,9 +51,9 @@ describe(@"FISAppDelegate", ^{
         });
     });
 
-    describe(@"deliLine:", ^{
+    describe(@"stringWithDeliLine:", ^{
         it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(deliLine:));
+            expect(delegate).to.respondTo(@selector(stringWithDeliLine:));
         });
 
         it(@"Should return the appropriate line", ^{
