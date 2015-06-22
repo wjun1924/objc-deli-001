@@ -18,10 +18,4 @@
  
  */
 
-- (NSString *)stringWithDeliLine:(NSMutableArray *)deliLine;
-
-- (NSMutableArray *)addName:(NSString *)name toDeliLine:(NSMutableArray *)deliLine;
-
-- (NSString *)serveNextCustomerInDeliLine:(NSMutableArray *)deliLine;
-
 @end
