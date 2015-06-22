@@ -17,53 +17,51 @@ describe(@"FISAppDelegate", ^{
 
     __block FISAppDelegate *delegate;
     __block NSMutableArray *deliLine;
+    
     beforeAll(^{
-        delegate = [[FISAppDelegate alloc] init];
+        
     });
     
     beforeEach(^{
-        deliLine = [[NSMutableArray alloc] init];
+        appDelegate = [[FISAppDelegate alloc] init];
+        deliLine = [[NSMutableArray alloc] initWithArray:@[@"Anita B.", @"Alan K.", @"Ada L.", @"Aaron S."] ];
     });
 
     describe(@"addName:toDeliLine:", ^{
-        it(@"should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(addName:toDeliLine:));
+        it(@"is declared and defined", ^{
+            expect(appDelegate).to.respondTo(@selector(addName:toDeliLine:));
         });
 
-        it(@"Should return a deli with another person", ^{
-            expect([delegate takeANumberWithDeliLine:deliLine Name:@"Ada"]).to.equal(@[@"Ada"]);
+        it(@"should insert a name at the end of the line", ^{
+            [appDelegate addName:(@"Alan K.") toDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Anita B.", @"Alan K.", @"Ada L.", @"Aaron S.", @"Alan T."]);
         });
     });
 
-    describe(@"nowServingWithDeliLine:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(nowServingWithDeliLine:));
+    describe(@"serveNextCustomerInDeliLine:", ^{
+        it(@"is declared and defined", ^{
+            expect(appDelegate).to.respondTo(@selector(serveNextCustomerInDeliLine:));
         });
 
-        it(@"Should remove the person from the deli", ^{
-            [deliLine addObject:@"Ada"];
-            [deliLine addObject:@"Al"];
-            expect([delegate nowServingWithDeliLine:deliLine]).to.equal(@[@"Al"]);
-        });
-
-        it(@"Should return empty array for empty deli", ^{
-            expect([delegate nowServingWithDeliLine:deliLine]).to.equal(@[]);
+        it(@"should remove the first name in line", ^{
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Alan K.", @"Ada L.", @"Aaron S."]);
         });
     });
 
     describe(@"stringWithDeliLine:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(stringWithDeliLine:));
+        it(@"is declard and defined", ^{
+            expect(appDelegate).to.respondTo(@selector(stringWithDeliLine:));
         });
 
-        it(@"Should return the appropriate line", ^{
-            [deliLine addObject:@"Ada"];
-            [deliLine addObject:@"Al"];
-            expect([delegate deliLine:deliLine]).to.equal(@"The line is currently: 1. Ada 2. Al");
+        it(@"returns the customers in line as a string", ^{
+            NSString *deliString = [appDelegate stringWithDeliLine:deliLine];
+            expect(deliString).to.equal(@"The line is currently:\n1. Anita B.\n2. Alan K.\n3. Ada L.\n4. Aaron S.");
         });
 
-        it(@"Should return The line is empty if it's empty", ^{
-            expect([delegate deliLine:deliLine]).to.equal(@"The line is empty");
+        it(@"return explain if the line is empty", ^{
+            [deliLine removeAllObjects];
+            expect([delegate deliLine:deliLine]).to.equal(@"The line is currently empty.");
         });
     });
 
