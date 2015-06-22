@@ -1,25 +1,26 @@
----
-  tags: methods, arrays, iteration
-  languages: objc
----
+# Deli Counter
 
-# Deli Counter - Take a Number
+## Objectives
+
+1. Write custom methods that take arguments and return results.
+2. Use a method as a helper method.
+3. Read and run unit tests to check your work.
 
 ## Instructions
 
-A pretty important deli needs somebody to program the "Take a Number" feature for their counter.
+The local deli is putting in a new computerized queue to keep track of their customers and improve productivity.
 
-At the beginning of the day, the deli is empty and is represented by an empty array.
+1. Open the `*.xcworkspace` file. Declare three instance methods (`-`) in `FISAppDelegate.h`:
+  * `stringWithDeliLine:` should accept an `NSMutableArray` argument `deliLine` and return an `NSString` object.
+  * `addName:toDeliLine:` should accept an `NSString` called `name` and an `NSMutableArray` called `deliLine` as arguments, and return an `NSMutableArray`.
+  * `serveNextCustomerInDeliLine:` should accept an `NSMutableArray` called `deliLine` as an argument and return an `NSString`.  
 
-Example: 
+2. Define them in `FISAppDelegate.m` to return a default value (or `nil`) and run the tests to fail. Review what the `Spec` file expects from your methods.
 
+3. Build the `stringWithDeliLine:` method to:
+  * if there are no customers in line, return the string `The line is empty.`,
+  * otherwise, return a formatted string beginning with `The line is:` and appending every customer in the queue on a new line (`\n`) beginning with their number in the queue, e. g. `1. Anita B.`. *Remember, these customers are humans so they count from one—not from zero like computers.*
 
-Write all of your code in `FISAppDelegate.m`.  All method signatures should be added to 'FISAppDelegate.h'.
+4. Build the method `addName:toDeliLine:` method to add the submitted `name` to the `deliLine`. Return the updated `deliLine` mutable array.
 
-1. Build a method that a new customer will use when entering the deli. The method, `takeANumberWithDeliLine:Name:`, should accept the current line in `NSMutableArray` format, the new person's name, and return the updated line. Also, the method should `NSLog` their position in line. And don't go being too programmer-y and give them their index. These are normal people. If they are 7th in line, tell them that. Don't get their hopes up by telling them they are number 6 in line.
-
-2. Build a method `nowServingWithDeliLine:`. This method also should take a `NSMutableArray` deliLine as an argument. This method should return the updated `NSMutableArray` deli Line and `NSLog` the name of the next person in line after removing them from the line. If there is nobody in line, it should `NSLog` that "There is nobody waiting to be served!" and return an empty array.
-
-3. Build a method `deliLine:` that takes an `NSMutableArray` deliLine as an argument, and returns the current line (returned as an NSString). If there is nobody in line, it should return "The line is currently empty."
-
-**Make sure to read the tests before you get started to ensure you code your methods to their exact specifications!**
+5. Build the method `serveNextCustomerInDeliLine:` method. Save the first name in the `deliLine` to an `NSString` object wihin the method. Then remove the first object from the `deliLine` and return the name you saved in the string object. **Hint:** *Using* `removeObject:` *could be problematic for you. There's another method on* `NSMutableArray` *that will let you specify an object to remove by array index.*
