@@ -15,57 +15,68 @@ SpecBegin(FISAppDelegate)
 
 describe(@"FISAppDelegate", ^{
 
-    __block FISAppDelegate *delegate;
+    __block FISAppDelegate *appDelegate;
     __block NSMutableArray *deliLine;
+    __block NSString *deliString;
+    
     beforeAll(^{
-        delegate = [[FISAppDelegate alloc] init];
+        
     });
     
     beforeEach(^{
-        deliLine = [[NSMutableArray alloc] init];
+        appDelegate = [[FISAppDelegate alloc] init];
+        deliLine = [[NSMutableArray alloc] initWithArray:@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan"] ];
+        deliString = [appDelegate stringWithDeliLine:deliLine];
     });
-
-    describe(@"takeaNumberWithDeliLine:Name:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(takeANumberWithDeliLine:Name:));
+    
+    describe(@"stringWithDeliLine:", ^{
+        it(@"returns an NSString object", ^{
+            expect(deliString).to.beKindOf([NSString class]);
         });
-
-        it(@"Should return a deli with another person", ^{
-            expect([delegate takeANumberWithDeliLine:deliLine Name:@"Ada"]).to.equal(@[@"Ada"]);
+        
+        it(@"returns the customers in line as a string", ^{
+            expect(deliString).to.equal(@"The line is:\n1. Anita\n2. Alan\n3. Ada\n4. Aaron\n5. Alan");
         });
-    });
-
-    describe(@"nowServingWithDeliLine:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(nowServingWithDeliLine:));
-        });
-
-        it(@"Should remove the person from the deli", ^{
-            [deliLine addObject:@"Ada"];
-            [deliLine addObject:@"Al"];
-            expect([delegate nowServingWithDeliLine:deliLine]).to.equal(@[@"Al"]);
-        });
-
-        it(@"Should return empty array for empty deli", ^{
-            expect([delegate nowServingWithDeliLine:deliLine]).to.equal(@[]);
+        
+        it(@"explains if the line is empty", ^{
+            [deliLine removeAllObjects];
+            deliString = [appDelegate stringWithDeliLine:deliLine];
+            expect(deliString).to.equal(@"The line is currently empty.");
         });
     });
 
-    describe(@"deliLine:", ^{
-        it(@"Should respond to the correct selector", ^{
-            expect(delegate).to.respondTo(@selector(deliLine:));
+    describe(@"addName:toDeliLine:", ^{
+        it(@"should insert a name at the end of the line", ^{
+            deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael" ]);
         });
-
-        it(@"Should return the appropriate line", ^{
-            [deliLine addObject:@"Ada"];
-            [deliLine addObject:@"Al"];
-            expect([delegate deliLine:deliLine]).to.equal(@"The line is currently: 1. Ada 2. Al");
-        });
-
-        it(@"Should return The line is empty if it's empty", ^{
-            expect([delegate deliLine:deliLine]).to.equal(@"The line is empty");
+        it(@"should work for multiple insertions", ^{
+            deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
+            deliLine = [appDelegate addName:@"Grace" toDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael", @"Grace"]);
         });
     });
+
+    describe(@"serveNextCustomerInDeliLine:", ^{
+        it(@"should remove only the first name in the line", ^{
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Alan", @"Ada", @"Aaron", @"Alan"]);
+        });
+        it(@"should remove one name each time it's called", ^{
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
+            expect(deliLine).to.equal(@[@"Ada", @"Aaron", @"Alan"]);
+        });
+        
+        it(@"should return the correct customer name", ^{
+            NSString *nextCustomer = [appDelegate serveNextCustomerInDeliLine:deliLine];
+            expect(nextCustomer).to.equal(@"Anita");
+
+            nextCustomer = [appDelegate serveNextCustomerInDeliLine:deliLine];
+            expect(nextCustomer).to.equal(@"Alan");
+        });
+    });
+
 
     afterEach(^{
 
