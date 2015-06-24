@@ -10,7 +10,7 @@
 
 The local deli is putting in a new computerized queue to keep track of their customers and improve productivity.
 
-1. Open the `*.xcworkspace` file. Declare three instance methods (`-`) in `FISAppDelegate.h`:
+1. Open the `*.xcworkspace` file. Declare three instance methods (beginning with `-`) in `FISAppDelegate.h`:
   * `stringWithDeliLine:` should accept an `NSMutableArray` argument `deliLine` and return an `NSString` object.
   * `addName:toDeliLine:` should accept an `NSString` called `name` and an `NSMutableArray` called `deliLine` as arguments, and return an `NSMutableArray`.
   * `serveNextCustomerInDeliLine:` should accept an `NSMutableArray` called `deliLine` as an argument and return an `NSString`.  

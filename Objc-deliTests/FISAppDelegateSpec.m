@@ -48,8 +48,10 @@ describe(@"FISAppDelegate", ^{
     describe(@"addName:toDeliLine:", ^{
         it(@"should insert a name at the end of the line", ^{
             deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
-            expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael"]);
-            
+            expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael" ]);
+        });
+        it(@"should work for multiple insertions", ^{
+            deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
             deliLine = [appDelegate addName:@"Grace" toDeliLine:deliLine];
             expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael", @"Grace"]);
         });
@@ -57,10 +59,12 @@ describe(@"FISAppDelegate", ^{
 
     describe(@"serveNextCustomerInDeliLine:", ^{
         it(@"should remove only the first name in the line", ^{
-            NSString *nextCustomer = [appDelegate serveNextCustomerInDeliLine:deliLine];
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
             expect(deliLine).to.equal(@[@"Alan", @"Ada", @"Aaron", @"Alan"]);
-            
-            nextCustomer = [appDelegate serveNextCustomerInDeliLine:deliLine];
+        });
+        it(@"should remove one name each time it's called", ^{
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
+            [appDelegate serveNextCustomerInDeliLine:deliLine];
             expect(deliLine).to.equal(@[@"Ada", @"Aaron", @"Alan"]);
         });
         
