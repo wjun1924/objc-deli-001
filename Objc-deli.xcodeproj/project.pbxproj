@@ -31,20 +31,6 @@
 			remoteGlobalIDString = 44E469B118A06414009EE9AA;
 			remoteInfo = "Objc-deli";
 		};
-		4D9186EB1B3858F70032356C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4D9186E61B3858F70032356C /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 35CA54710137E4467EB2CC01;
-			remoteInfo = "Pods-Objc-deliTests";
-		};
-		4D9186ED1B3858F70032356C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4D9186E61B3858F70032356C /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 071768F955BF79B0DCC71940;
-			remoteInfo = "Pods-Objc-deliTests-Specta";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +50,6 @@
 		44E469D418A06414009EE9AA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		44E469DC18A06414009EE9AA /* Objc-deliTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Objc-deliTests-Info.plist"; sourceTree = "<group>"; };
 		44E469DE18A06414009EE9AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4D9186E61B3858F70032356C /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = SOURCE_ROOT; };
 		5FF818F84C8301947B89DA8A /* Pods-Objc-deliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Objc-deliTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Objc-deliTests/Pods-Objc-deliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6290DE98E6370C37D028B506 /* Pods-Objc-deliTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Objc-deliTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Objc-deliTests/Pods-Objc-deliTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4E0D34E60DD48D3A5665168 /* libPods-Objc-deliTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Objc-deliTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +141,6 @@
 			children = (
 				44E469DB18A06414009EE9AA /* Supporting Files */,
 				D847801A19374CA5005FEBA5 /* FISAppDelegateSpec.m */,
-				4D9186E61B3858F70032356C /* Pods.xcodeproj */,
 			);
 			path = "Objc-deliTests";
 			sourceTree = "<group>";
@@ -168,15 +152,6 @@
 				44E469DD18A06414009EE9AA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4D9186E71B3858F70032356C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4D9186EC1B3858F70032356C /* libPods-Objc-deliTests.a */,
-				4D9186EE1B3858F70032356C /* libPods-Objc-deliTests-Specta.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9949EBBAEEF9FB2C161C4536 /* Pods */ = {
@@ -253,12 +228,6 @@
 			mainGroup = 44E469A918A06414009EE9AA;
 			productRefGroup = 44E469B318A06414009EE9AA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4D9186E71B3858F70032356C /* Products */;
-					ProjectRef = 4D9186E61B3858F70032356C /* Pods.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				44E469B118A06414009EE9AA /* Objc-deli */,
@@ -266,23 +235,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4D9186EC1B3858F70032356C /* libPods-Objc-deliTests.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-Objc-deliTests.a";
-			remoteRef = 4D9186EB1B3858F70032356C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4D9186EE1B3858F70032356C /* libPods-Objc-deliTests-Specta.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-Objc-deliTests-Specta.a";
-			remoteRef = 4D9186ED1B3858F70032356C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		44E469B018A06414009EE9AA /* Resources */ = {
