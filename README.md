@@ -18,7 +18,7 @@ The local deli is putting in a new computerized queue to keep track of their cus
 2. Define them in `FISAppDelegate.m` to return a default value (or `nil`) and run the tests to fail. Review what the `Spec` file expects from your methods.
 
 3. Build the `stringWithDeliLine:` method to:
-  * if there are no customers in line, return the string `The line is empty.`,
+  * if there are no customers in line, return the string `The line is currently empty.`,
   * otherwise, return a formatted string beginning with `The line is:` and appending every customer in the queue on a new line (`\n`) beginning with their number in the queue, e. g. `1. Anita B.`. *Remember, these customers are humans so they count from one—not from zero like computers.*
 
 4. Build the method `addName:toDeliLine:` method to add the submitted `name` to the `deliLine`. Return the updated `deliLine` mutable array.
