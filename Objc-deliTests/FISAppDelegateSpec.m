@@ -17,7 +17,9 @@ describe(@"FISAppDelegate", ^{
 
     __block FISAppDelegate *appDelegate;
     __block NSMutableArray *deliLine;
+    __block NSMutableArray *deliLine2;
     __block NSString *deliString;
+    __block NSString *deliString2;
     
     beforeAll(^{
         
@@ -26,7 +28,9 @@ describe(@"FISAppDelegate", ^{
     beforeEach(^{
         appDelegate = [[FISAppDelegate alloc] init];
         deliLine = [[NSMutableArray alloc] initWithArray:@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan"] ];
+      deliLine2 = [[NSMutableArray alloc] initWithArray:@[@"Joe",@"Mark"]];
         deliString = [appDelegate stringWithDeliLine:deliLine];
+        deliString2 = [appDelegate stringWithDeliLine:deliLine2];
     });
     
     describe(@"stringWithDeliLine:", ^{
@@ -36,6 +40,7 @@ describe(@"FISAppDelegate", ^{
         
         it(@"returns the customers in line as a string", ^{
             expect(deliString).to.equal(@"The line is:\n1. Anita\n2. Alan\n3. Ada\n4. Aaron\n5. Alan");
+            expect(deliString2).to.equal(@"The line is:\n1. Joe\n2. Mark");
         });
         
         it(@"explains if the line is empty", ^{
