@@ -34,10 +34,6 @@ describe(@"FISAppDelegate", ^{
     });
     
     describe(@"stringWithDeliLine:", ^{
-        it(@"returns an NSString object", ^{
-            expect(deliString).to.beKindOf([NSString class]);
-        });
-        
         it(@"returns the customers in line as a string", ^{
             expect(deliString).to.equal(@"The line is:\n1. Anita\n2. Alan\n3. Ada\n4. Aaron\n5. Alan");
             expect(deliString2).to.equal(@"The line is:\n1. Joe\n2. Mark");
@@ -55,6 +51,7 @@ describe(@"FISAppDelegate", ^{
             deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
             expect(deliLine).to.equal(@[@"Anita", @"Alan", @"Ada", @"Aaron", @"Alan", @"Michael" ]);
         });
+        
         it(@"should work for multiple insertions", ^{
             deliLine = [appDelegate addName:@"Michael" toDeliLine:deliLine];
             deliLine = [appDelegate addName:@"Grace" toDeliLine:deliLine];
@@ -67,6 +64,7 @@ describe(@"FISAppDelegate", ^{
             [appDelegate serveNextCustomerInDeliLine:deliLine];
             expect(deliLine).to.equal(@[@"Alan", @"Ada", @"Aaron", @"Alan"]);
         });
+        
         it(@"should remove one name each time it's called", ^{
             [appDelegate serveNextCustomerInDeliLine:deliLine];
             [appDelegate serveNextCustomerInDeliLine:deliLine];
