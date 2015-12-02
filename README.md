@@ -24,3 +24,5 @@ The local deli is putting in a new computerized queue to keep track of their cus
 4. Build the method `addName:toDeliLine:` method to add the submitted `name` to the `deliLine`. Since the `deliLine` argument is mutable, this method does not need to return an array; the array argument is modified in-place.
 
 5. Build the method `serveNextCustomerInDeliLine:` method. Save the first name in the `deliLine` to an `NSString` object within the method. Then remove the first object from the `deliLine` and return the name you removed. **Hint:** *Using* `removeObject:` *could be problematic for you. There's another method on* `NSMutableArray` *that will let you specify an object to remove by array index.*
+
+<a href='https://learn.co/lessons/objc-deli' data-visibility='hidden'>View this lesson on Learn.co</a>
