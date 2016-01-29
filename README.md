@@ -25,4 +25,4 @@ The local deli is putting in a new computerized queue to keep track of their cus
 
 5. Build the method `serveNextCustomerInDeliLine:` method. Save the first name in the `deliLine` to an `NSString` object within the method. Then remove the first object from the `deliLine` and return the name you removed. **Hint:** *Using* `removeObject:` *could be problematic for you. There's another method on* `NSMutableArray` *that will let you specify an object to remove by array index.*
 
-<a href='https://learn.co/lessons/objc-deli' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/objc-deli' title='Deli Counter'>Deli Counter</a> on Learn.co and start learning to code for free.</p>
